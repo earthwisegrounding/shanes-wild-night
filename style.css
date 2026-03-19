@@ -356,3 +356,114 @@ html, body {
   animation: invincible-border 0.4s linear infinite;
   border-radius: 4px;
 }
+
+/* ======================== VICTORY SCREEN ======================== */
+#win-screen {
+  background: #0d0d1a;
+  padding: 0;
+  z-index: 200;
+}
+
+#win-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Eminem image — nearly fills screen */
+#win-eminem-wrap {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+#win-eminem-img {
+  height: 88vh;
+  max-height: 88vh;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* Speech bubble */
+#speech-bubble {
+  position: absolute;
+  top: 5vh;
+  left: 50%;
+  transform: translateX(-10%);
+  background: #fff;
+  color: #111;
+  border-radius: 20px;
+  padding: 18px 22px;
+  max-width: min(380px, 55vw);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.5);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+#speech-bubble.visible {
+  opacity: 1;
+}
+
+/* Tail pointing down-left toward Eminem's mouth */
+#speech-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -18px;
+  left: 28px;
+  border: 10px solid transparent;
+  border-top-color: #fff;
+}
+
+#speech-text {
+  font-family: 'Boogaloo', cursive;
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  line-height: 1.4;
+  color: #111;
+}
+
+/* Shane hearts — fades in on top of eminem */
+#win-shane-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+  pointer-events: none;
+}
+
+#win-shane-img.fadeIn {
+  opacity: 1;
+}
+
+/* Play Again footer */
+#win-footer {
+  position: absolute;
+  bottom: 5vh;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  z-index: 10;
+}
+
+#win-footer.visible {
+  opacity: 1;
+}
+
+#win-footer .final-score {
+  font-size: 1.4rem;
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+}

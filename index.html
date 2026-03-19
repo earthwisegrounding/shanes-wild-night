@@ -20,7 +20,7 @@
           <li>🌭 Eat <strong>hotdogs</strong> to score points</li>
           <li>🍺 Beers give bonus points — but too many makes you <strong>drunk</strong>!</li>
           <li>🚔 <strong>Avoid the cops</strong> — they'll arrest you!</li>
-          <li>🔥 Eat <strong>5 hotdogs</strong> to go <strong>INVINCIBLE</strong> — Eminem joins you!</li>
+          <li>🔥 Eat <strong>3 hotdogs</strong> to go <strong>INVINCIBLE</strong> — Eminem joins you!</li>
           <li>💪 While invincible, eat the cops!</li>
         </ul>
         <h3>Controls</h3>
@@ -70,13 +70,33 @@
       </div>
     </div>
 
-    <!-- Game Over Screen -->
+    <!-- Game Over Screen (loss) -->
     <div id="gameover-screen" class="screen hidden">
       <div class="overlay-content">
         <h1 id="end-title">Game Over!</h1>
         <p id="end-message"></p>
         <p class="final-score">Score: <span id="final-score">0</span></p>
         <button id="restart-btn" class="btn-primary">🔄 Play Again</button>
+      </div>
+    </div>
+
+    <!-- Victory Screen (win) -->
+    <div id="win-screen" class="screen hidden">
+      <div id="win-inner">
+        <!-- Eminem with speech bubble -->
+        <div id="win-eminem-wrap">
+          <img id="win-eminem-img" src="eminem.png" alt="Eminem" />
+          <div id="speech-bubble">
+            <p id="speech-text"></p>
+          </div>
+        </div>
+        <!-- Shane hearts fades in over Eminem -->
+        <img id="win-shane-img" src="shane hearts.png" alt="Shane Hearts" />
+        <!-- Play Again footer -->
+        <div id="win-footer">
+          <p class="final-score">Score: <span id="win-final-score">0</span></p>
+          <button id="win-restart-btn" class="btn-primary">🔄 Play Again</button>
+        </div>
       </div>
     </div>
   </div>

@@ -754,14 +754,61 @@ function endGame(won) {
   canvas.style.filter = 'none';
   canvas.classList.remove('invincible');
   audioStop();
-  finalScoreEl.textContent = state.score;
-  endTitleEl.textContent = won ? '🎉 LEGENDARY NIGHT!' : '🚔 BUSTED!';
-  endMessageEl.textContent = won
-    ? `Shane had a wild night and survived! Score: ${state.score}`
-    : `The cops finally got Shane. Better luck next time!`;
-  gameoverScreen.classList.remove('hidden');
   gameScreen.classList.add('hidden');
+
+  if (won) {
+    showWinScreen(state.score);
+  } else {
+    finalScoreEl.textContent = state.score;
+    endTitleEl.textContent  = '🚔 BUSTED!';
+    endMessageEl.textContent = `The cops finally got Shane. Better luck next time!`;
+    gameoverScreen.classList.remove('hidden');
+  }
 }
+
+// ── Victory screen sequence ───────────────────────────────────────
+function showWinScreen(score) {
+  const winScreen   = document.getElementById('win-screen');
+  const bubble      = document.getElementById('speech-bubble');
+  const speechText  = document.getElementById('speech-text');
+  const shaneImg    = document.getElementById('win-shane-img');
+  const footer      = document.getElementById('win-footer');
+  const scoreSpan   = document.getElementById('win-final-score');
+
+  // Reset state
+  bubble.classList.remove('visible');
+  shaneImg.classList.remove('fadeIn');
+  footer.classList.remove('visible');
+  speechText.textContent = '';
+  scoreSpan.textContent  = score;
+
+  winScreen.classList.remove('hidden');
+
+  const MSG = "Dayum homie! You ate them dogs up like a real gangsta! I knew you had it in you!";
+
+  // Step 1 — after short pause, show bubble and typewrite the text
+  setTimeout(() => {
+    bubble.classList.add('visible');
+    let i = 0;
+    const typer = setInterval(() => {
+      speechText.textContent += MSG[i++];
+      if (i >= MSG.length) {
+        clearInterval(typer);
+
+        // Step 2 — after text finishes, fade Shane hearts in
+        setTimeout(() => {
+          shaneImg.classList.add('fadeIn');
+
+          // Step 3 — after fade, reveal Play Again
+          setTimeout(() => {
+            footer.classList.add('visible');
+          }, 1800);
+        }, 800);
+      }
+    }, 38); // ~38ms per char ≈ 2.5 seconds total for the line
+  }, 600);
+}
+
 
 // ── Game loop ────────────────────────────────────────────────────
 function loop(ts) {
@@ -794,6 +841,7 @@ function loop(ts) {
 function startGame() {
   startScreen.classList.add('hidden');
   gameoverScreen.classList.add('hidden');
+  document.getElementById('win-screen').classList.add('hidden');
   gameScreen.classList.remove('hidden');
   canvas.style.filter = 'none';
   canvas.classList.remove('invincible');
@@ -809,6 +857,7 @@ function startGame() {
 
 document.getElementById('start-btn').addEventListener('click', startGame);
 document.getElementById('restart-btn').addEventListener('click', startGame);
+document.getElementById('win-restart-btn').addEventListener('click', startGame);
 
 window.addEventListener('resize', () => {
   if (state && state.running) resizeCanvas();
