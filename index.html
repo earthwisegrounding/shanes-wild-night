@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Shane's Wild Night</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+    <!-- Start Screen -->
+    <div id="start-screen" class="screen">
+      <div class="title-block">
+        <h1 class="game-title">🍺 Shane's Wild Night 🌭</h1>
+        <p class="subtitle">Eat hotdogs. Drink beers. Dodge the cops.</p>
+      </div>
+      <div class="instructions">
+        <h3>How to Play</h3>
+        <ul>
+          <li>🌭 Eat <strong>hotdogs</strong> to score points</li>
+          <li>🍺 Beers give bonus points — but too many makes you <strong>drunk</strong>!</li>
+          <li>🚔 <strong>Avoid the cops</strong> — they'll arrest you!</li>
+          <li>🔥 Eat <strong>5 hotdogs</strong> to go <strong>INVINCIBLE</strong> — Eminem joins you!</li>
+          <li>💪 While invincible, eat the cops!</li>
+        </ul>
+        <h3>Controls</h3>
+        <ul>
+          <li>⌨️ Arrow keys / WASD</li>
+          <li>📱 On-screen D-pad (mobile)</li>
+        </ul>
+      </div>
+      <button id="start-btn" class="btn-primary">🎮 Start Game</button>
+    </div>
+
+    <!-- Game Screen -->
+    <div id="game-screen" class="screen hidden">
+      <div id="hud">
+        <div class="hud-item">
+          <span class="hud-label">Score</span>
+          <span id="score">0</span>
+        </div>
+        <div class="hud-item">
+          <span class="hud-label">Lives</span>
+          <span id="lives">❤️❤️❤️</span>
+        </div>
+        <div class="hud-item">
+          <span class="hud-label">Beers</span>
+          <span id="beers">🍺×0</span>
+        </div>
+        <div class="hud-item status-item">
+          <span id="status-label"></span>
+        </div>
+      </div>
+      <div id="canvas-wrapper">
+        <canvas id="game-canvas"></canvas>
+      </div>
+      <!-- Mobile D-pad -->
+      <div id="dpad">
+        <div class="dpad-row">
+          <button class="dpad-btn" id="btn-up">▲</button>
+        </div>
+        <div class="dpad-row dpad-middle">
+          <button class="dpad-btn" id="btn-left">◀</button>
+          <div class="dpad-center"></div>
+          <button class="dpad-btn" id="btn-right">▶</button>
+        </div>
+        <div class="dpad-row">
+          <button class="dpad-btn" id="btn-down">▼</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Game Over Screen -->
+    <div id="gameover-screen" class="screen hidden">
+      <div class="overlay-content">
+        <h1 id="end-title">Game Over!</h1>
+        <p id="end-message"></p>
+        <p class="final-score">Score: <span id="final-score">0</span></p>
+        <button id="restart-btn" class="btn-primary">🔄 Play Again</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
