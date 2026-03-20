@@ -3,13 +3,34 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Shane's Wild Night</title>
+  <title>Shane's Universe</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div id="app">
-    <!-- Start Screen -->
-    <div id="start-screen" class="screen">
+
+    <!-- ══════════ MODE SELECT ══════════ -->
+    <div id="mode-screen" class="screen">
+      <div class="title-block">
+        <h1 class="game-title">🍺 Shane's Universe 🌭</h1>
+        <p class="subtitle">Choose your adventure, legend.</p>
+      </div>
+      <div id="mode-cards">
+        <button class="mode-card" id="mode-pacman">
+          <div class="mode-icon">🕹️</div>
+          <div class="mode-name">Shane's Wild Night</div>
+          <div class="mode-desc">Pac-Man style arcade game. Eat hotdogs, dodge cops, summon Eminem.</div>
+        </button>
+        <button class="mode-card" id="mode-adventure">
+          <div class="mode-icon">🎤</div>
+          <div class="mode-name">Diabolical Adventures</div>
+          <div class="mode-desc">A text-based choose-your-own-adventure through Bremerton's finest dives and malls.</div>
+        </button>
+      </div>
+    </div>
+
+    <!-- ══════════ PAC-MAN GAME ══════════ -->
+    <div id="start-screen" class="screen hidden">
       <div class="title-block">
         <h1 class="game-title">🍺 Shane's Wild Night 🌭</h1>
         <p class="subtitle">Eat hotdogs. Drink beers. Dodge the cops.</p>
@@ -29,10 +50,12 @@
           <li>📱 On-screen D-pad (mobile)</li>
         </ul>
       </div>
-      <button id="start-btn" class="btn-primary">🎮 Start Game</button>
+      <div class="btn-row">
+        <button class="btn-secondary" id="pacman-back-btn">← Back</button>
+        <button id="start-btn" class="btn-primary">🎮 Start Game</button>
+      </div>
     </div>
 
-    <!-- Game Screen -->
     <div id="game-screen" class="screen hidden">
       <div id="hud">
         <div class="hud-item">
@@ -54,7 +77,6 @@
       <div id="canvas-wrapper">
         <canvas id="game-canvas"></canvas>
       </div>
-      <!-- Mobile D-pad -->
       <div id="dpad">
         <div class="dpad-row">
           <button class="dpad-btn" id="btn-up">▲</button>
@@ -76,31 +98,61 @@
         <h1 id="end-title">Game Over!</h1>
         <p id="end-message"></p>
         <p class="final-score">Score: <span id="final-score">0</span></p>
-        <button id="restart-btn" class="btn-primary">🔄 Play Again</button>
+        <div class="btn-row">
+          <button class="btn-secondary" id="gameover-back-btn">← Menu</button>
+          <button id="restart-btn" class="btn-primary">🔄 Play Again</button>
+        </div>
       </div>
     </div>
 
     <!-- Victory Screen (win) -->
     <div id="win-screen" class="screen hidden">
       <div id="win-inner">
-        <!-- Eminem with speech bubble -->
         <div id="win-eminem-wrap">
           <img id="win-eminem-img" src="eminem.png" alt="Eminem" />
           <div id="speech-bubble">
             <p id="speech-text"></p>
           </div>
         </div>
-        <!-- Shane hearts fades in over Eminem -->
         <img id="win-shane-img" src="shane hearts.png" alt="Shane Hearts" />
-        <!-- Play Again footer -->
         <div id="win-footer">
           <p class="final-score">Score: <span id="win-final-score">0</span></p>
-          <button id="win-restart-btn" class="btn-primary">🔄 Play Again</button>
+          <div class="btn-row">
+            <button class="btn-secondary" id="win-back-btn">← Menu</button>
+            <button id="win-restart-btn" class="btn-primary">🔄 Play Again</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+
+    <!-- ══════════ TEXT ADVENTURE ══════════ -->
+    <div id="adventure-screen" class="screen hidden">
+      <!-- Intro -->
+      <div id="adv-intro">
+        <h1 class="adv-title">Shane Wyman</h1>
+        <h2 class="adv-subtitle">Bremerton Rap God</h2>
+        <div class="adv-warning">
+          ⚠️ WARNING: STRICTLY FOR ADULTS ⚠️<br>
+          Contains heavy drinking, gratuitous weed smoking, extremely filthy rap lyrics, and wild Bremerton-style debauchery. Discretion is advised.
+        </div>
+        <div class="btn-row" style="justify-content:center; gap:16px;">
+          <button class="btn-secondary" id="adv-back-btn">← Back</button>
+          <button class="btn-adv" id="adv-enter-btn">ENTER THE LEGEND</button>
+        </div>
+      </div>
+      <!-- Game -->
+      <div id="adv-game" style="display:none;">
+        <h1 class="adv-title" style="font-size:2em;" id="adv-chapter-title">The Hustle</h1>
+        <h2 class="adv-subtitle" id="adv-chapter-sub">Kitsap County, WA</h2>
+        <div id="adv-story"></div>
+        <div id="adv-choices"></div>
+        <button class="btn-secondary adv-menu-btn" id="adv-game-back-btn">← Menu</button>
+      </div>
+    </div>
+
+  </div><!-- #app -->
 
   <script src="game.js"></script>
+  <script src="adventure.js"></script>
 </body>
 </html>
