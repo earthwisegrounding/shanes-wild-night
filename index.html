@@ -6,15 +6,88 @@
   <title>Shane's Universe</title>
   <link rel="stylesheet" href="style.css" />
   <style>
-    /* A little inline CSS for the new Wingman mode to keep it looking sharp */
-    .wingman-container { display: flex; flex-direction: column; gap: 15px; margin: 20px 0; text-align: left; }
-    .wingman-panel { background: rgba(0,0,0,0.5); border: 2px solid #ff4757; border-radius: 8px; padding: 15px; }
-    .emergency-panel { border-color: #ffaa00; background: rgba(255, 170, 0, 0.1); }
-    .wingman-panel h3 { margin-top: 0; color: #ff4757; border-bottom: 1px solid #ff4757; padding-bottom: 5px;}
-    .emergency-panel h3 { color: #ffaa00; border-bottom: 1px solid #ffaa00; }
-    .wingman-list { list-style-type: none; padding: 0; margin: 0; }
-    .wingman-list li { padding: 8px; background: rgba(255,255,255,0.1); margin-bottom: 5px; border-radius: 4px; border-left: 3px solid #ff4757; font-style: italic; }
-    .emergency-panel .wingman-list li { border-left-color: #ffaa00; }
+    /* Mobile-optimized CSS for the Wingman Mode */
+    .wingman-container { 
+      display: flex; 
+      flex-direction: column; 
+      gap: 15px; 
+      margin: 15px auto; 
+      text-align: left;
+      width: 100%;
+      max-width: 600px;
+      box-sizing: border-box;
+      padding: 0 10px;
+    }
+    .wingman-panel { 
+      background: rgba(0,0,0,0.6); 
+      border: 2px solid #ff4757; 
+      border-radius: 8px; 
+      padding: 15px; 
+      box-sizing: border-box;
+      width: 100%;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    }
+    .emergency-panel { 
+      border-color: #ffaa00; 
+      background: rgba(255, 170, 0, 0.15); 
+    }
+    .wingman-panel h3 { 
+      margin-top: 0; 
+      color: #ff4757; 
+      border-bottom: 1px solid #ff4757; 
+      padding-bottom: 8px;
+      font-size: 1.2rem;
+    }
+    .emergency-panel h3 { 
+      color: #ffaa00; 
+      border-bottom: 1px solid #ffaa00; 
+    }
+    .wingman-list { 
+      list-style-type: none; 
+      padding: 0; 
+      margin: 0; 
+    }
+    .wingman-list li { 
+      padding: 10px; 
+      background: rgba(255,255,255,0.05); 
+      margin-bottom: 8px; 
+      border-radius: 6px; 
+      border-left: 4px solid #ff4757; 
+      font-style: italic; 
+      font-size: 0.95rem;
+      line-height: 1.4;
+      word-wrap: break-word;
+    }
+    .emergency-panel .wingman-list li { 
+      border-left-color: #ffaa00; 
+    }
+    /* Stack buttons on mobile to make them thumb-friendly */
+    .wingman-btn-row {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 0 10px;
+      box-sizing: border-box;
+    }
+    .wingman-btn-row button {
+      width: 100%;
+      padding: 15px;
+      font-size: 1.1rem;
+    }
+    
+    @media (min-width: 480px) {
+      .wingman-btn-row {
+        flex-direction: row;
+        justify-content: center;
+      }
+      .wingman-btn-row button {
+        width: auto;
+        min-width: 150px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -159,57 +232,58 @@
       </div>
     </div>
 
-    <div id="wingman-screen" class="screen hidden">
-      <div class="title-block">
-        <h1 class="game-title">💅 The Whacky-Hot Survival Guide 📱</h1>
-        <p class="subtitle">Stay strong, Shane. The payoff is worth the brain damage.</p>
+    <div id="wingman-screen" class="screen hidden" style="overflow-y: auto; height: 100vh; padding-bottom: 50px;">
+      <div class="title-block" style="padding: 10px;">
+        <h1 class="game-title" style="font-size: 1.8rem;">💅 Survival Guide 📱</h1>
+        <p class="subtitle" style="font-size: 0.9rem;">Weaponize the Slim Shady connection. Stay strong.</p>
       </div>
       
       <div class="wingman-container">
          <div class="wingman-panel">
            <h3>💬 "I'm Listening" Auto-Responders</h3>
-           <p style="font-size: 0.8em; margin-bottom: 10px;">Read these in a deep, gravelly voice while staring blankly at the wall.</p>
+           <p style="font-size: 0.8em; margin-bottom: 10px; color: #ccc;">Keep her talking while you formulate an escape plan.</p>
            <ul class="wingman-list">
-             <li>"Wow, that's wild. Her aura really did that?"</li>
+             <li>"That's crazy. She's giving off major Stan energy right now."</li>
+             <li>"Wow. She really just swept you under the rug like lint?"</li>
+             <li>"Damn, that’s toxic. Honestly, makes Kim look reasonable."</li>
              <li>"No way. And then what did your tarot card say?"</li>
-             <li>"That's crazy, I was literally just thinking about manifesting that."</li>
-             <li>"Damn, Mercury retrograde is really kicking everyone's ass huh?"</li>
              <li>"Right? It's like people don't even respect boundaries anymore."</li>
            </ul>
          </div>
 
          <div class="wingman-panel">
-           <h3>🔄 Tactical Subject Changes</h3>
-           <p style="font-size: 0.8em; margin-bottom: 10px;">When you feel your soul leaving your body, pivot to these.</p>
+           <h3>🔄 Tactical Em-Pivots</h3>
+           <p style="font-size: 0.8em; margin-bottom: 10px; color: #ccc;">When the 'whacky' is peaking, guide her back to Marshall.</p>
            <ul class="wingman-list">
-             <li>"Speaking of healing energies... what's your stance on early 2000s Eminem?"</li>
-             <li>"Listen, I agree completely. But let me ask you: if we went out tonight, are we getting hotdogs?"</li>
-             <li>"You know what aligns with my chakras right now? You coming over to watch me freestyle."</li>
+             <li>"Listen, healing crystals are cool, but what's your top 3 tracks on The Marshall Mathers LP?"</li>
+             <li>"I totally feel you on that. Hey, hot take—do you think Relapse is actually underrated?"</li>
+             <li>"That's a wild story. Anyway, if we go out later, will you let me play 'Without Me' on the jukebox 7 times in a row?"</li>
+             <li>"You know what aligns with my chakras right now? You coming over to watch me spit the fast verse of 'Rap God'."</li>
            </ul>
          </div>
 
          <div class="wingman-panel emergency-panel">
            <h3>🚨 EMERGENCY BAILOUT EXCUSES</h3>
-           <p style="font-size: 0.8em; margin-bottom: 10px;">Use only if the "whacky" is starting to eclipse the "hot."</p>
+           <p style="font-size: 0.8em; margin-bottom: 10px; color: #ccc;">Pull the ripcord. Abort mission.</p>
            <ul class="wingman-list">
-             <li>"Oh shoot, the cops are here for the noise complaint again. Gotta run!"</li>
-             <li>"Damn, I left my hotdog on the stove and the kitchen's filling with smoke!"</li>
-             <li>"Hey my bro just dropped a keg on his foot, gotta drive him to the ER!"</li>
-             <li>"My phone's at 1%—I'm gonna lose you, text me when you figure out your moon rising sign!"</li>
+             <li>"Oh shoot, my palms are sweaty, knees weak, arms are heavy... I gotta go lie down."</li>
+             <li>"Damn, my mom just made spaghetti and I gotta go eat it before it gets cold!"</li>
+             <li>"Hey, Dre just called, he needs me in the studio. Gotta run!"</li>
+             <li>"My phone's at 1%—I'm gonna lose you, text me your favorite D12 verse!"</li>
            </ul>
          </div>
       </div>
 
-      <div class="btn-row">
-        <button class="btn-secondary" id="wingman-back-btn" onclick="document.getElementById('wingman-screen').classList.add('hidden'); document.getElementById('mode-screen').classList.remove('hidden');">← Back to Safety</button>
-        <button class="btn-primary" onclick="alert('She\'s still talking, Shane. Just nod and smile. You got this.')">Generate More Willpower</button>
+      <div class="wingman-btn-row">
+        <button class="btn-secondary" id="wingman-back-btn" onclick="document.getElementById('wingman-screen').classList.add('hidden'); document.getElementById('mode-screen').classList.remove('hidden');">← Back to Menu</button>
+        <button class="btn-primary" onclick="alert('She\'s still talking, Shane. Just ask her about the 8 Mile soundtrack. You got this.')">Generate More Willpower</button>
       </div>
     </div>
 
   </div><script src="game.js"></script>
   <script src="adventure.js"></script>
   <script>
-    // Quick script patch to make the new menu button work without having to rewrite app.js
+    // Link the new mode button to the screen
     document.getElementById('mode-wingman').addEventListener('click', function() {
       document.getElementById('mode-screen').classList.add('hidden');
       document.getElementById('wingman-screen').classList.remove('hidden');
