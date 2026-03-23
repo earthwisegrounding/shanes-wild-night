@@ -493,6 +493,9 @@ html, body {
 #mode-screen {
   background: radial-gradient(ellipse at 50% 0%, #2a1a5e 0%, #0d0d1a 70%);
   gap: 32px;
+  justify-content: flex-start;
+  overflow-y: auto;
+  padding: max(40px, 10vh) 20px 80px 20px;
 }
 
 #mode-cards {
