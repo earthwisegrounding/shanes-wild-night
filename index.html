@@ -30,6 +30,11 @@
           <div class="mode-name">Whacky-Hot Survival Guide</div>
           <div class="mode-desc">Tactical conversation aid for enduring tedious phone calls with crazy hot chicks.</div>
         </button>
+        <button class="mode-card" id="mode-coach">
+          <div class="mode-icon">🧠</div>
+          <div class="mode-name">Coach Shane AI</div>
+          <div class="mode-desc">Get life advice from East Bremerton's premier (and unemployed) Eminem-obsessed guru.</div>
+        </button>
       </div>
     </div>
 
@@ -196,13 +201,46 @@
       </div>
     </div>
 
+    <div id="coach-screen" class="screen hidden">
+      <div class="title-block">
+        <h1 class="game-title" style="font-size: 1.8rem;">🧠 Coach Shane AI 🧢</h1>
+        <p class="subtitle" style="font-size: 0.9rem;">East Bremerton's most qualified life coach.</p>
+      </div>
+
+      <div id="coach-chat-container">
+        <div id="coach-chat-history">
+          <div class="coach-message ai">
+            <strong>Coach Shane:</strong> Yo. What's good? You need some life advice from a guy who's definitely got his own life 100% figured out? Hit me.
+          </div>
+        </div>
+
+        <div id="coach-input-area">
+          <input type="text" id="coach-input" placeholder="Ask Coach Shane something..." autocomplete="off">
+          <button id="coach-send-btn" class="btn-primary">Ask</button>
+        </div>
+      </div>
+
+      <div class="btn-row" style="margin-top: 20px;">
+        <button class="btn-secondary" id="coach-back-btn">← Back to Menu</button>
+      </div>
+    </div>
+
   </div><script src="game.js"></script>
   <script src="adventure.js"></script>
+  <script src="coach.js"></script>
   <script>
     // Link the new mode button to the screen
     document.getElementById('mode-wingman').addEventListener('click', function() {
       document.getElementById('mode-screen').classList.add('hidden');
       document.getElementById('wingman-screen').classList.remove('hidden');
+    });
+    document.getElementById('mode-coach').addEventListener('click', function() {
+      document.getElementById('mode-screen').classList.add('hidden');
+      document.getElementById('coach-screen').classList.remove('hidden');
+    });
+    document.getElementById('coach-back-btn').addEventListener('click', function() {
+      document.getElementById('coach-screen').classList.add('hidden');
+      document.getElementById('mode-screen').classList.remove('hidden');
     });
   </script>
 </body>
