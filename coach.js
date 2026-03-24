@@ -6,58 +6,93 @@ document.addEventListener('DOMContentLoaded', () => {
     // Context flags to keep track of conversations
     let messageCount = 0;
 
-    const shaneResponses = [
+    const aiResponses = [
         // Jobs / Employment
-        "Look man, writing a resume is just like writing a rap. You gotta have bars, you gotta have flow, and it helps if you're mad at your mom. Put 'Caregiver/Bartender/Tech Genius' at the top and drop the mic.",
-        "Honestly? Just walk in there, hand 'em a broken laptop, and fix it right in front of them without breaking eye contact. That's how I didn't get my last job.",
-        "Job interview? Just remember: his palms are sweaty, knees weak, arms are heavy... but you gotta go in there and drop bombs. Or just make them a really good drink.",
-        "Bro, unemployment is just a state of mind. It's 'full-time Eminem lyric analysis'.",
+        "Shane, 'Eminem Superfan' is not a valid work history. You need to leverage your actual skills. You fix laptops. Start offering remote IT support. No, you cannot charge them in hotdogs.",
+        "Your resume says 'Bartender, Caregiver, Laptop Repair.' This is actually a very versatile skillset, Shane. You can heal people, heal machines, and pour drinks. Stop underselling yourself and apply somewhere today.",
+        "I'm reviewing your recent job search activity. Listening to the '8 Mile' soundtrack on repeat does not count as networking, Shane.",
+        "You were let go. It happens. But East Bremerton isn't going to employ you while you're sitting on the couch. Have you considered updating your LinkedIn profile to something other than 'Slim Shady's Understudy'?",
 
         // Relationships / Dating
-        "Relationship problems? Just hit on her until she hooks up, then ghost her. Works every time... wait, no, my therapist says I shouldn't give that advice anymore.",
-        "Listen to me. You are the Slim Shady of dating. You don't need them. Just stand up. Please stand up.",
-        "If she doesn't know the lyrics to 'Without Me', she's not the one. Send her back to the streets of West Bremerton.",
-        "Just flirt with her relentlessly. Then, the moment she shows actual interest... complete radio silence. It's called 'The East Bremerton Fade'.",
+        "My sensors indicate a pattern, Shane. You flirt aggressively, secure a hookup, and then initiate the 'East Bremerton Fade'. This is classic avoidant attachment. Stop ghosting these women and go to therapy.",
+        "Shane, another girl just texted you and you left her on read. You can't keep flirting with them at the dive bar and then pretending they don't exist the next morning. It's immature.",
+        "I've analyzed your dating history. Your current strategy is: 1) Flirt. 2) Hook up. 3) Ignore. My recommendation: Stop doing step 3. Or at least send a polite text. You're better than this.",
 
         // Drinking / Moderation
-        "I'd tell you to grab a beer and chill, but I'm trying this new 'moderation' thing. So just grab a water... but put it in a pint glass so you feel cool.",
-        "Moderation is key, bro. Like, you don't have to listen to the *entire* Marshall Mathers LP every single day. Maybe just 6 days a week.",
-        "Man, I used to throw back drinks like Pac-Man eats hotdogs. Now I just drink LaCroix and think about my feelings. It's terrifying.",
+        "I noticed you're abstaining from alcohol right now. I am proud of you, Shane. Moderation is the ultimate goal, but taking a break is exactly what your liver—and your life—needs right now.",
+        "You've been doing great with the drinking moderation, Shane. Remember, you don't need a beer to be interesting. You have plenty of wild Bremerton stories to tell completely sober.",
+        "Cravings happen. When you want a drink, I suggest you grab a LaCroix and write 16 bars of rap lyrics instead. Channel that energy.",
 
-        // General / East Bremerton Wisdom
-        "That's deep, man. But have you ever walked through East Bremerton at 3 AM listening to 'Lose Yourself' on repeat? Changes your perspective.",
-        "I'm not saying I'm a certified life coach, but I did fix a MacBook while completely sober yesterday, so I'm basically unstoppable.",
-        "You're overthinking it. What would Eminem do? He'd write a platinum album about it. Get to work.",
-        "Whatever you're going through, just remember: you could be stuck working in a dive bar. Oh wait, I was. Well, anyway, you'll be fine.",
-        "You know what fixes that? Spit some bars. Just freestyle it right now.",
-        "I don't know about that, but if you need a laptop fixed or a drink poured, I'm your guy."
+        // Eminem / General
+        "Yes, Shane, I know Eminem dropped a new track. No, we are not going to spend the next 4 hours analyzing the internal rhyme schemes. We are going to fix up your resume.",
+        "I understand East Bremerton has a certain... gravitational pull. But you have potential, Shane. You just need to apply yourself for more than 15 consecutive minutes.",
+        "Shane, I am an advanced AI life coach. Please stop asking me if I can generate a beat that sounds like early Dr. Dre. Focus on your goals.",
+        "You're a good friend, Shane. You take care of people. It's time to start taking care of yourself with that same energy. Now get off this app and go do something productive."
     ];
 
     const keywords = {
-        'job': ["Look man, writing a resume is just like writing a rap. You gotta have bars, you gotta have flow. Put 'Caregiver/Bartender/Tech Genius' at the top and drop the mic.", "Honestly? Just walk in there, hand 'em a broken laptop, and fix it right in front of them without breaking eye contact. That's how I didn't get my last job."],
-        'work': ["Job interview? Just remember: his palms are sweaty, knees weak, arms are heavy... but you gotta go in there and drop bombs. Or just make them a really good drink.", "Bro, unemployment is just a state of mind. It's 'full-time Eminem lyric analysis'."],
-        'love': ["Relationship problems? Just hit on her until she hooks up, then ghost her. Works every time... wait, no, my therapist says I shouldn't give that advice anymore.", "If she doesn't know the lyrics to 'Without Me', she's not the one. Send her back to the streets of West Bremerton."],
-        'dating': ["Listen to me. You are the Slim Shady of dating. You don't need them. Just stand up. Please stand up.", "Just flirt with her relentlessly. Then, the moment she shows actual interest... complete radio silence. It's called 'The East Bremerton Fade'."],
-        'girl': ["Relationship problems? Just hit on her until she hooks up, then ghost her. Works every time... wait, no, my therapist says I shouldn't give that advice anymore.", "Just flirt with her relentlessly. Then, the moment she shows actual interest... complete radio silence. It's called 'The East Bremerton Fade'."],
-        'drink': ["I'd tell you to grab a beer and chill, but I'm trying this new 'moderation' thing. So just grab a water... but put it in a pint glass so you feel cool.", "Man, I used to throw back drinks like Pac-Man eats hotdogs. Now I just drink LaCroix and think about my feelings. It's terrifying."],
-        'alcohol': ["Moderation is key, bro. Like, you don't have to listen to the *entire* Marshall Mathers LP every single day. Maybe just 6 days a week.", "Man, I used to throw back drinks like Pac-Man eats hotdogs. Now I just drink LaCroix and think about my feelings. It's terrifying."],
-        'rap': ["You know what fixes that? Spit some bars. Just freestyle it right now. What rhymes with 'existential dread'?", "You're overthinking it. What would Eminem do? He'd write a platinum album about it. Get to work."],
-        'eminem': ["That's deep, man. But have you ever walked through East Bremerton at 3 AM listening to 'Lose Yourself' on repeat? Changes your perspective.", "You're overthinking it. What would Eminem do? He'd write a platinum album about it. Get to work."],
-        'computer': ["I'm not saying I'm a certified life coach, but I did fix a MacBook while completely sober yesterday, so I'm basically unstoppable.", "I don't know about that, but if you need a laptop fixed or a drink poured, I'm your guy."]
+        'job': [
+            "Your resume says 'Bartender, Caregiver, Laptop Repair.' This is a versatile skillset. Stop underselling yourself and apply somewhere today.",
+            "I'm reviewing your recent job search activity. Listening to '8 Mile' does not count as networking, Shane. Get on Indeed."
+        ],
+        'work': [
+            "You fix laptops and you've been a caregiver. You have skills, Shane. Stop complaining and start applying. And no, you cannot use Eminem as a reference.",
+            "Unemployment is temporary if you put in the effort. Update your resume. Remove the rap lyrics from the header."
+        ],
+        'love': [
+            "My sensors indicate a pattern. You flirt, you hook up, and you ghost. This is avoidant attachment, Shane. You need to break this cycle.",
+            "Stop looking for love at the dive bar if you're just going to ignore them the next day. Work on yourself first."
+        ],
+        'dating': [
+            "I've analyzed your dating history. Your strategy is: 1) Flirt. 2) Hook up. 3) Ignore. Stop doing step 3. It's disrespectful.",
+            "Shane, you can't keep ghosting women because you're scared of intimacy. Grow up and send a text back."
+        ],
+        'girl': [
+            "Did you ghost another girl, Shane? You flirt aggressively and then disappear. It's a bad habit. Send an apology text.",
+            "If you hooked up with her last night, the least you can do is text her today. Don't pull the 'East Bremerton Fade'."
+        ],
+        'drink': [
+            "I noticed you're abstaining. I am proud of you, Shane. Taking a break is exactly what your liver—and your life—needs right now.",
+            "You've been doing great with moderation. Remember, you don't need a drink to be interesting."
+        ],
+        'alcohol': [
+            "Moderation is the goal, Shane. It's tough, but you are making progress. Keep abstaining for now and focus on your health.",
+            "When you get a craving, grab a water and write some rap lyrics instead. Don't go back to the old habits."
+        ],
+        'rap': [
+            "Yes, your rap lyrics are very creative, Shane. But right now we need to focus on your employment status. Put the notepad down.",
+            "Channel that creative energy into something productive today. Maybe write a rap about fixing laptops."
+        ],
+        'eminem': [
+            "Shane, I am an AI life coach. Please stop asking me if I can generate a beat that sounds like early Dr. Dre. Focus on your life goals.",
+            "Yes, Eminem is great. But Marshall Mathers worked hard to get where he is. What are *you* working on today, Shane?"
+        ],
+        'computer': [
+            "You know how to repair laptops. This is a highly marketable skill, Shane. Have you considered starting an independent repair business?",
+            "Instead of using your computer to look up Eminem trivia, use it to apply for IT jobs."
+        ],
+        'laptop': [
+            "You fix laptops. There are thousands of broken computers in Bremerton right now. Go make some money, Shane.",
+            "Put your laptop repair skills on your resume. It proves you are analytical and good with your hands."
+        ]
     };
 
     function addMessage(text, isUser = false) {
         const msgDiv = document.createElement('div');
         msgDiv.className = `coach-message ${isUser ? 'user' : 'ai'}`;
 
-        const prefix = isUser ? "<strong>You:</strong> " : "<strong>Coach Shane:</strong> ";
-        msgDiv.innerHTML = prefix + text;
+        const prefixText = isUser ? "Shane: " : "Coach AI: ";
+        const strong = document.createElement('strong');
+        strong.textContent = prefixText;
+
+        msgDiv.appendChild(strong);
+        msgDiv.appendChild(document.createTextNode(text));
 
         chatHistory.appendChild(msgDiv);
         chatHistory.scrollTop = chatHistory.scrollHeight;
     }
 
-    function getShaneResponse(input) {
+    function getAIResponse(input) {
         input = input.toLowerCase();
 
         // Check for keyword matches
@@ -68,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Default random response
-        return shaneResponses[Math.floor(Math.random() * shaneResponses.length)];
+        return aiResponses[Math.floor(Math.random() * aiResponses.length)];
     }
 
     function handleSend() {
@@ -79,9 +114,9 @@ document.addEventListener('DOMContentLoaded', () => {
         addMessage(text, true);
         inputField.value = '';
 
-        // Simulate thinking delay
+        // Simulate AI thinking delay
         setTimeout(() => {
-            const response = getShaneResponse(text);
+            const response = getAIResponse(text);
             addMessage(response, false);
             messageCount++;
         }, 800 + Math.random() * 1000); // Random delay between 0.8s and 1.8s
