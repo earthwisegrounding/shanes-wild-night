@@ -51,6 +51,7 @@
                 -3px -3px 0 #0ff,
                 0 0 20px #fff,
                 0 0 40px var(--color1);
+            z-index: 10;
         }
 
         h2 {
@@ -60,6 +61,7 @@
             border-radius: 50px;
             border: 2px dashed var(--color2);
             animation: flash 0.5s infinite step-end;
+            z-index: 10;
         }
 
         @keyframes textPulse {
@@ -80,34 +82,21 @@
         .portal {
             position: relative;
             margin-top: 40px;
-            padding: 40px;
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
             background: radial-gradient(circle, transparent 20%, #000 80%);
             box-shadow: 
                 0 0 50px var(--color1), 
                 inset 0 0 50px var(--color3);
             animation: spinPortal 10s linear infinite;
-            z-index: 10;
-        }
-
-        .portal-inner {
-            animation: spinPortalReverse 10s linear infinite;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            /* Scale up the widget container slightly */
-            transform: scale(1.2); 
+            z-index: 5;
         }
 
         @keyframes spinPortal {
             0% { transform: rotate(0deg) scale(1); }
             50% { transform: rotate(180deg) scale(1.1); }
             100% { transform: rotate(360deg) scale(1); }
-        }
-
-        @keyframes spinPortalReverse {
-            0% { transform: rotate(360deg); }
-            100% { transform: rotate(0deg); }
         }
 
         .floating-shapes {
@@ -147,7 +136,6 @@
             width: 100%;
             z-index: 20;
         }
-
     </style>
 </head>
 <body>
@@ -161,14 +149,12 @@
     <h1>ADAM ACID</h1>
     <h2>SPEAK TO THE ENTITY</h2>
 
-    <div class="portal">
-        <div class="portal-inner">
-            <elevenlabs-convai agent-id="agent_1501kp04pbcze8dabkxstvndnnpe"></elevenlabs-convai>
-            <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
-        </div>
-    </div>
+    <div class="portal"></div>
 
     <marquee scrollamount="15">TUNE IN 👁️ TURN ON 👁️ DROP INTO THE WIDGET 👁️ THE FRACTALS ARE LISTENING 👁️</marquee>
+
+    <elevenlabs-convai agent-id="agent_1501kp04pbcze8dabkxstvndnnpe"></elevenlabs-convai>
+    <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
 
 </body>
 </html>
