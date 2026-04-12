@@ -1,60 +1,174 @@
 <!DOCTYPE html>
-<lang="en">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ElevenLabs Widget Test</title>
+    <title>👁️ ADAM ACID'S MULTIVERSAL MIND MELT 👁️</title>
     <style>
+        :root {
+            --color1: #ff00ff;
+            --color2: #00ffff;
+            --color3: #00ff00;
+            --color4: #ffff00;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #f4f4f9;
-            color: #333;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 100vh;
-            margin: 0;
-            padding: 20px;
-            text-align: center;
+            background: linear-gradient(45deg, var(--color1), var(--color2), var(--color3), var(--color4));
+            background-size: 800% 800%;
+            animation: meltBackground 8s ease infinite, hueShift 10s linear infinite;
+            font-family: "Courier New", Courier, monospace;
+            overflow: hidden;
+            color: #fff;
         }
 
-        .container {
-            background: #ffffff;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            max-width: 600px;
-            width: 100%;
+        @keyframes meltBackground {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes hueShift {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
         }
 
         h1 {
-            margin-top: 0;
-            color: #111;
+            font-size: 5rem;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 10px;
+            margin: 0;
+            animation: textPulse 1.5s infinite alternate, wobble 3s ease-in-out infinite;
+            text-shadow: 
+                3px 3px 0 #f0f,
+                -3px -3px 0 #0ff,
+                0 0 20px #fff,
+                0 0 40px var(--color1);
         }
 
-        p {
-            color: #666;
-            margin-bottom: 30px;
+        h2 {
+            font-size: 1.5rem;
+            background: #000;
+            padding: 10px 20px;
+            border-radius: 50px;
+            border: 2px dashed var(--color2);
+            animation: flash 0.5s infinite step-end;
         }
 
-        /* Optional: Add some spacing around the widget container if needed */
-        .widget-wrapper {
-            margin-top: 20px;
+        @keyframes textPulse {
+            0% { transform: scale(1); text-shadow: 0 0 10px #fff, 0 0 20px #f0f, 0 0 30px #f0f; }
+            100% { transform: scale(1.1); text-shadow: 0 0 20px #fff, 0 0 40px #0ff, 0 0 60px #0ff; }
         }
+
+        @keyframes wobble {
+            0%, 100% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
+        }
+
+        @keyframes flash {
+            0% { color: var(--color4); background: #000; }
+            50% { color: #000; background: var(--color4); }
+        }
+
+        .portal {
+            position: relative;
+            margin-top: 40px;
+            padding: 40px;
+            border-radius: 50%;
+            background: radial-gradient(circle, transparent 20%, #000 80%);
+            box-shadow: 
+                0 0 50px var(--color1), 
+                inset 0 0 50px var(--color3);
+            animation: spinPortal 10s linear infinite;
+            z-index: 10;
+        }
+
+        .portal-inner {
+            animation: spinPortalReverse 10s linear infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* Scale up the widget container slightly */
+            transform: scale(1.2); 
+        }
+
+        @keyframes spinPortal {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.1); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+
+        @keyframes spinPortalReverse {
+            0% { transform: rotate(360deg); }
+            100% { transform: rotate(0deg); }
+        }
+
+        .floating-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .shape {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            border: 2px solid #fff;
+            animation: float 6s infinite ease-in-out alternate;
+        }
+
+        .s1 { width: 100px; height: 100px; border-radius: 50%; top: 10%; left: 15%; animation-delay: 0s; box-shadow: 0 0 20px #0ff;}
+        .s2 { width: 150px; height: 150px; top: 60%; left: 80%; transform: rotate(45deg); animation-delay: -2s; box-shadow: 0 0 30px #f0f;}
+        .s3 { width: 0; height: 0; border-left: 50px solid transparent; border-right: 50px solid transparent; border-bottom: 100px solid var(--color4); top: 70%; left: 10%; animation-delay: -4s; background: transparent; border-top: none;}
+
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg) scale(1); }
+            100% { transform: translateY(-100px) rotate(360deg) scale(1.5); }
+        }
+
+        marquee {
+            position: absolute;
+            bottom: 20px;
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--color4);
+            text-shadow: 2px 2px #000;
+            width: 100%;
+            z-index: 20;
+        }
+
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>AI Agent Test Page</h1>
-        <p>Click the widget below to interact with the ElevenLabs conversational agent.</p>
+    <div class="floating-shapes">
+        <div class="shape s1"></div>
+        <div class="shape s2"></div>
+        <div class="shape s3"></div>
+    </div>
 
-        <div class="widget-wrapper">
-            <elevenlabs-convai agent-id="agent_2201knzw2vrgftbrtzs9mrvrx9r9"></elevenlabs-convai>
+    <h1>ADAM ACID</h1>
+    <h2>SPEAK TO THE ENTITY</h2>
+
+    <div class="portal">
+        <div class="portal-inner">
+            <elevenlabs-convai agent-id="agent_1501kp04pbcze8dabkxstvndnnpe"></elevenlabs-convai>
             <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
         </div>
     </div>
+
+    <marquee scrollamount="15">TUNE IN 👁️ TURN ON 👁️ DROP INTO THE WIDGET 👁️ THE FRACTALS ARE LISTENING 👁️</marquee>
 
 </body>
 </html>
